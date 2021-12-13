@@ -5,23 +5,7 @@ import DayList from "./DayList";
 import Appointment from "components/Appointment";
 import axios from 'axios';
 
-// const days = [
-//   {
-//     id: 1,
-//     name: "Monday",
-//     spots: 2,
-//   },
-//   {
-//     id: 2,
-//     name: "Tuesday",
-//     spots: 5,
-//   },
-//   {
-//     id: 3,
-//     name: "Wednesday",
-//     spots: 0,
-//   },
-// ];
+
 
 
 const appointments = [
@@ -64,10 +48,12 @@ const appointments = [
 ];
 
 export default function Application(props) {
-  // const [day, setDay] = useState("Monday");
-  const [days, setDays] = useState([]);
-  // const [interviewer, setInterviewer] = useState(1)
-  
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    // you may put the line below, but will have to remove/comment hardcoded appointments variable
+    appointments: {}
+  });
   useEffect(() => {
    
     axios.get('http://localhost:8001/api/days').then(response => {
@@ -91,7 +77,7 @@ export default function Application(props) {
 />
 <hr className="sidebar__separator sidebar--centered" />
 <nav className="sidebar__menu">
-<DayList days={days} value = {days} onChange={setDays} />
+<DayList days={days} value = {day} onChange={setDays} />
 
 </nav>
 <img
