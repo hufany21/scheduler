@@ -13,7 +13,7 @@ export function getAppointmentsForDay(state, day) {
   }
   return results
 }
-export function getInterviwersForDay(state, day) {
+export function getInterviewersForDay(state, day) {
 
   let results=[]
   const filteredDays = state.days.filter(weekday => weekday.name === day);
@@ -26,6 +26,7 @@ export function getInterviwersForDay(state, day) {
       results.push(state.interviewers[id]) 
     } 
   }
+  
   return results
 }
 
