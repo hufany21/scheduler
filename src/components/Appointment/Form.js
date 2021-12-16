@@ -7,7 +7,7 @@ import Button from "components/Button";
 
 export default function Form(props) {
   const [student, setStudent] = useState(props.student || "");
-  const [interviewer, setInterviewer] = useState(props.interviewer.id || null);
+  const [interviewer, setInterviewer] = useState(props.interviewer || null);
 
   const reset = () => {
     setStudent("")
@@ -18,8 +18,7 @@ export default function Form(props) {
     reset()
     props.onCancel()
   }
-console.log(props)
-console.log(props)
+
 
 
   return (
