@@ -19,11 +19,13 @@ export default function useVisualMode(initial) {
 
   function back() { 
     let his = [...history]
-    if(mode === his[his.length-1] && mode !== initial){
+    if (history.length <= 1) {
+      setMode(initial);
+    } else {
+      setMode(history[history.length - 2]);
       his.pop()
+      setHistory(his);
     }
-    setMode(his[his.length-1])
-   }
-
+  }
   return { mode, transition, back };
 };

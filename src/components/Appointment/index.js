@@ -1,5 +1,5 @@
 import React from "react";
-// import classNames from "classnames";
+
 
 import "components/Appointment/styles.scss";
 import Header from "./Header.js";
@@ -12,6 +12,7 @@ import Error from "./Error.js";
 import useVisualMode from "hooks/useVisualMode.js";
 
 
+
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -20,13 +21,13 @@ const CONFIRM= "CONFIRM";
 const DELETE = "DELETE";
 const EDIT = "EDIT";
 const ERROR_DELETE ="ERROR_DELETE"
-const ERROR_SAVE='ERRO_SAVE'
+const ERROR_SAVE='ERROR_SAVE'
 export default function Appointment(props) {
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY,
-   
   );
+  
 
   function save(name, interviewer) {
     const interview = {
@@ -35,14 +36,14 @@ export default function Appointment(props) {
     };
     transition(SAVING)
     props.bookInterview(props.id, interview)
-    .then(() => transition(SHOW))
+    .then(() =>  transition(SHOW))
     .catch((error) => transition(ERROR_SAVE, true))
   }
 
   function cancel(id){
-    transition(DELETE, true)
+    transition(DELETE)
     props.cancelInterview(props.id)
-    .then(() => transition(EMPTY))
+    .then(() =>   transition(EMPTY))
     .catch((error) => transition(ERROR_DELETE, true))
   } 
 
