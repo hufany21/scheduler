@@ -18,7 +18,7 @@
       color: $dark-background;
     }
 
-    & --selected {
+    &.--selected {
       background-color: darken($white, 5%);
       color: $dark-background;
 
