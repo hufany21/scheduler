@@ -52,10 +52,9 @@ export default function useApplicationData() {
   
     const appointments = {
       ...state.appointments,
-     interview: appointment
-      
     };
-  
+    appointments[id] = appointment
+    
     setState({
       
       ...state,
@@ -64,10 +63,12 @@ export default function useApplicationData() {
   
       return axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
+        const testData = updateSpots(state, appointments, id)
+        console.log(testData)
         setState({
           ...state,
           appointments,
-          days: updateSpots(state, appointments, id)
+          days: testData
         });              
     })
   }
